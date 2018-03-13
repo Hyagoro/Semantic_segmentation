@@ -64,7 +64,7 @@ def layers(vgg_layer3_out, vgg_layer4_out, vgg_layer7_out, num_classes):
     l1 = tf.layers.conv2d_transpose(conv_1x1, num_classes, 4, strides=(2, 2), padding='same',
                                     kernel_regularizer=tf.contrib.layers.l2_regularizer(1e-3))
 
-    tf.Print(l1, [tf.shape(l1)])
+    # tf.Print(l1, [tf.shape(l1)])
 
     vgg_layer4_out_1x1 = tf.layers.conv2d(vgg_layer4_out, num_classes, 1, padding='same',
                                           kernel_regularizer=tf.contrib.layers.l2_regularizer(1e-3))
@@ -152,8 +152,8 @@ def run():
     data_dir = './data'
     runs_dir = './runs'
     tests.test_for_kitti_dataset(data_dir)
-    batch_size = 25
-    nb_epoch = 10
+    batch_size = 16
+    nb_epoch = 200
 
     # Download pretrained vgg model
     #helper.maybe_download_pretrained_vgg(data_dir)
